@@ -31,6 +31,10 @@ class RolesSeeder extends Seeder
                 'roles_name' => 'Viewer',
                 'roles_code' => 'VWR', // ตัวอย่าง: VWR - Viewer
             ],
+            [
+                'roles_name' => 'CO-RD',
+                'roles_code' => 'CORD', // ตัวอย่าง: VWR - Viewer
+            ],
         ]);
     }
 }

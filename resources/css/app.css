@@ -5,3 +5,10 @@
 [x-cloak] {
     display: none;
 }
+
+.login-background {
+    background-image: url('../../public/images/bg.png');  /* Replace with your image path */
+    background-size: cover;  /* Adjust as needed (cover, contain, etc.) */
+    background-position: center;  /* Adjust as needed (center, top, etc.) */
+    height: 100vh;  /* Set the height to cover the viewport */
+}

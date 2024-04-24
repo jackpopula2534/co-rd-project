@@ -18,6 +18,13 @@ export default {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
         },
+        colors: {
+            'login-pastel': '#fa9583',
+            'login-green': '#048482',
+            'tomato': '#FF6347',
+            'headbar-green': '#038482',
+            'sidebar-green': '#3f9a99',
+          },
     },
 
     plugins: [forms, typography, require("flowbite/plugin")],

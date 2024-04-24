@@ -27,7 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'companies_id'
+        'companies_id',
+        'employee_code',
+        'departments_id',
+        'companies_id',
     ];
 
     /**
@@ -39,8 +42,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'two_factor_recovery_codes',
-        'two_factor_secret',
-        'companies_id',
+        'two_factor_secret'
     ];
 
     /**
@@ -67,6 +69,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsTo(Roles::class, 'roles_id');
+    }
+
+    public function departments()
+    {
+        return $this->belongsTo(Departments::class, 'departments_id');
     }
 
     public function company()

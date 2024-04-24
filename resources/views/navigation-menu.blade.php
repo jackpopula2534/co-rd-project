@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100 bg-teal-600">
+<nav x-data="{ open: false }" class="border-b border-gray-100 bg-headbar-green">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -84,8 +84,8 @@
 
                 <!-- User Data เบื้องต้น -->
                 <h4 class="ms-3 text-xs font-semibold text-white" style="text-align: right;">
-                    <p>{{ Auth::user()->name }} (01234567)</p>
-                    <p>ตำแหน่ง Co - RD</p>
+                    <p>{{ Auth::user()->name }} ({{ Auth::user()->employee_code }})</p>
+                    <p>ตำแหน่ง : {{ Auth::user()->departments->name_en }}</p>
                 </h4>
 
                 <!-- Notifications -->

@@ -13,7 +13,7 @@
     <aside id="sidebar-multi-level-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-teal-600 dark:bg-teal-600">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-sidebar-green dark:bg-sidebar-green">
             <ul class="space-y-2 font-medium">
                 {{-- {{ $menus }} --}}
                 @foreach ($menus as $menu)
@@ -44,6 +44,14 @@
                                     <li>
                                         <a wire:click.prevent="setActiveSubMenu('{{ $menu->title }}','{{ $children->title }}','{{ $children->link }}')"
                                             class="flex items-center w-full p-2 text-white pl-11 {{ session()->get('activeSubMenu') == $children->title ? 'bg-teal-700' : '' }} transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-500 dark:hover:bg-gray-700">
+
+                                            <svg class="flex-shrink-0 w-5 h-5 transition duration-75 {{ session()->get('activeSubMenu') == $children->title ? 'bg-white text-gray-900' : 'text-white' }} group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-500"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="{{ $children->icon }}" />
+                                            </svg>
+
                                             <span
                                                 class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-500">{{ $children->title }}</span>
 
