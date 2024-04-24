@@ -32,5 +32,31 @@ class MenusTableSeeder extends Seeder
             ['menus_id' => 5, 'roles_id' => 1], // Edit Profile access
             ['menus_id' => 6, 'roles_id' => 1], // Delete Profile access
         ]);
+
+        // Assuming you know the IDs of menus and roles
+        // Example: Menu 1 is accessible by Role 1 in Company 1 and by all users in Role 2 in Company 2
+        DB::table('menu_accesses')->insert([
+
+            ['menus_id' => 1, 'roles_id' => null, 'company_id' => null, 'user_id' => null],
+
+
+            ['menus_id' => 2, 'roles_id' => 2, 'company_id' => 1, 'user_id' => null],
+            ['menus_id' => 2, 'roles_id' => 3, 'company_id' => 1, 'user_id' => null],
+
+
+            ['menus_id' => 2, 'roles_id' => null, 'company_id' => 1, 'user_id' => null],
+            ['menus_id' => 2, 'roles_id' => null, 'company_id' => 2, 'user_id' => null],
+
+
+            ['menus_id' => 3, 'roles_id' => null, 'company_id' => null, 'user_id' => 2],
+
+            ['menus_id' => 4, 'roles_id' => null, 'company_id' => null, 'user_id' => null],
+            ['menus_id' => 5, 'roles_id' => null, 'company_id' => null, 'user_id' => null],
+            ['menus_id' => 6, 'roles_id' => null, 'company_id' => null, 'user_id' => null],
+        ]);
+
+        // Note: The 'user_id' is null where the rule applies to all users within the role at a company.
+        // If 'company_id' is null, it implies all companies (if your logic supports this).
+
     }
 }

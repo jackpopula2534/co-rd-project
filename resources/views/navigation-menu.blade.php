@@ -83,7 +83,7 @@
 
 
                 <!-- User Data เบื้องต้น -->
-                <h4 class="ms-3 text-xs font-semibold text-white">
+                <h4 class="ms-3 text-xs font-semibold text-white" style="text-align: right;">
                     <p>{{ Auth::user()->name }} (01234567)</p>
                     <p>ตำแหน่ง Co - RD</p>
                 </h4>
@@ -128,7 +128,6 @@
                             <x-dropdown-link href="#">
                                 {{ __('ทั้งหมดของวันนี้') }}
                             </x-dropdown-link>
-
 
                             <div class="border-t border-gray-200"></div>
 

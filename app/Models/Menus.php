@@ -8,10 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Menus extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'icon',
+        'link',
+        'permission',
+        'parent_id',
+    ];
+
     public function roles()
     {
         return $this->belongsToMany(Roles::class, 'menu_roles');
     }
+
+    public function accessmenu()
+    {
+        return $this->belongsTo(MenuAccess::class,'id','menus_id');
+    }
+
 
     // Relationship to fetch the parent menu
     public function parent()

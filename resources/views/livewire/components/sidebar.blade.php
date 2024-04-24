@@ -15,6 +15,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-teal-600 dark:bg-teal-600">
             <ul class="space-y-2 font-medium">
+                {{-- {{ $menus }} --}}
                 @foreach ($menus as $menu)
                     <li>
                         @if (count($menu->children) > 0)
@@ -52,9 +53,9 @@
                             </ul>
                         @else
                             <a wire:click.prevent="setActiveMenu('{{ $menu->title }}','{{ $menu->link }}')"
-                                class="cursor-pointer flex items-center w-full p-2 text-base text-white {{ session()->get('activeMenu') == $menu->title ? 'bg-teal-700' : '' }} transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-500 dark:hover:bg-gray-700">
+                                class="cursor-pointer flex items-center w-full p-2 text-base {{ session()->get('activeMenu') == $menu->title ? 'bg-white text-gray-900' : 'text-white' }} transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-500 dark:hover:bg-gray-700">
                                 @if ($menu->icon)
-                                    <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-500"
+                                    <svg class="flex-shrink-0 w-5 h-5 {{ session()->get('activeMenu') == $menu->title ? 'bg-white text-gray-900' : 'text-white' }} transition duration-75 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-500"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="{{ $menu->icon }}" />
