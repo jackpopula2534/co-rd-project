@@ -1,14 +1,195 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 [x-cloak] {
     display: none;
 }
 
+#sidebar-multi-level-sidebar {
+    margin-top: 63.5px;
+    /* Replace with actual height of head bar */
+    /* Other styles from your original code */
+}
+
 .login-background {
-    background-image: url('../../public/images/bg.png');  /* Replace with your image path */
-    background-size: cover;  /* Adjust as needed (cover, contain, etc.) */
-    background-position: center;  /* Adjust as needed (center, top, etc.) */
-    height: 100vh;  /* Set the height to cover the viewport */
+    background-image: url('../../public/images/bg.png');
+    /* Replace with your image path */
+    background-size: cover;
+    /* Adjust as needed (cover, contain, etc.) */
+    background-position: center;
+    /* Adjust as needed (center, top, etc.) */
+    height: 100vh;
+    /* Set the height to cover the viewport */
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.container-hub {
+    width: 100%;
+    height: 100vh;
+    background: #119aaf;
+    color: #fff;
+}
+
+.container-hub .sidenav {
+    width: 95px;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    padding: 32px 16px;
+    background-color: black;
+    transition: width 0.6s;
+}
+
+label .close-btn {
+    display: none;
+}
+
+.container-hub .logo h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: 0.3s ease;
+}
+
+.sidenav .search_bar {
+    margin-top: 32px;
+    position: relative;
+}
+
+.sidenav .search_bar i {
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    left: 25px;
+    /* top: 50%; */
+    transform: translate(-50%, 50%);
+}
+
+.sidenav .search_bar input {
+    width: 100%;
+    padding: 11px;
+    padding-left: 60px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: black;
+    /* opacity: 0; */
+    /* pointer-events: none;
+    transform: 0.3s ease; */
+    /* margin-left: 10px; */
+}
+
+.sidenav .menu_text {
+    margin-top: 24px;
+}
+
+
+.sidenav .menu_text p {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 10px;
+
+}
+
+.sidenav .icon_items ul {
+    list-style: none;
+    margin-top: 32px;
+    padding: 0 5px;
+}
+
+
+.sidenav .icon_items ul li {
+    cursor: pointer;
+    margin: 4px;
+    padding: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s ease;
+}
+
+.icon_items .active,
+.sidenav .icon_items ul li:hover {
+    background: #119aaf;
+}
+
+
+.sidenav .icon_items ul li i {
+    padding: 0 12px;
+    font-size: 20px;
+}
+
+.sidenav .icon_items ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    padding-left: 18px;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transform: 0.3s ease;
+}
+
+#click {
+    display: none;
+}
+
+.container-hub label {
+    /* position: absolute; */
+    padding-left: 18px;
+    left: 3%;
+    top: 1%;
+    font-size: 25px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#click:checked~.sidenav {
+    width: 260px;
+}
+
+#click:checked~.sidenav .icon_items ul li a {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+#click:checked~.sidenav .logo h2 {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+#click:checked~.sidenav .search_bar input {
+    width: 100%;
+    margin-left: 0;
+}
+
+#click:checked~.sidenav .search_bar i {
+    left: 20px;
+}
+
+#click:checked~label {
+    left: 1%;
+}
+
+
+#click:checked~label .close-btn {
+    display: block;
+}
+
+#click:checked~label .menu-btn {
+    display: none;
 }

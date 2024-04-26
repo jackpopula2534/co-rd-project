@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RawMaterialsController;
 use App\Http\Controllers\RolesController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::middleware([
 });
 
 Route::resource('roles', RolesController::class);
+Route::resource('/raw_material/global', RawMaterialsController::class);

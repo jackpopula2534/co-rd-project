@@ -16,6 +16,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script> --}}
 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -27,7 +29,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
-        <div class="sm:ml-64">
+        <div class="">
             @livewire('navigation-menu')
         </div>
         <!-- Page Heading -->
@@ -40,7 +42,6 @@
         @endif
 
         <livewire:components.sidebar />
-
         <div class="p-4 sm:ml-64">
 
             <!-- Page Content -->

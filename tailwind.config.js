@@ -24,6 +24,21 @@ export default {
             'tomato': '#FF6347',
             'headbar-green': '#038482',
             'sidebar-green': '#3f9a99',
+            'main-color': '#048482',
+            // rm detail
+            '': '#7f7f7f',
+            'gray-brown-500': '#7f7f7f',
+            'gray-brown-300': '#d4d9d9',
+            'gray-brown-200': '#ebebeb',
+
+            'pastel-300': '#ffc2b8',
+            'pastel-600': '#fa9583',
+            'pastel-800': '#e0715e',
+
+            'green-tea-600': '#61d38e',
+
+
+
           },
     },
 
