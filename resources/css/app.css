@@ -7,11 +7,9 @@
     display: none;
 }
 
-#sidebar-multi-level-sidebar {
+/* #sidebar-multi-level-sidebar {
     margin-top: 63.5px;
-    /* Replace with actual height of head bar */
-    /* Other styles from your original code */
-}
+} */
 
 .login-background {
     background-image: url('../../public/images/bg.png');
@@ -192,4 +190,41 @@ label .close-btn {
 
 #click:checked~label .menu-btn {
     display: none;
+}
+
+
+.progress-container {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    /* Added for absolute positioning of the label */
+}
+
+.progress {
+    height: 100%;
+    background-color: #e0f0ef;
+    border-radius: 20px;
+    /* Updated: added px for the border-radius */
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #ffc2b8;
+    width: 60%;
+    /* Example width */
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 40%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+    /* color: rgb(78, 78, 78); */
+    /* Ensure the text is visible on a light background */
 }

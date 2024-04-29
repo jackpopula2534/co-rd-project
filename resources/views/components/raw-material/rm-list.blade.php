@@ -8,12 +8,11 @@
                 ชื่อสาร</div>
         </div>
 
-
         <div class="list">
             @foreach ($rmList as $value)
                 <div class="h-28 rm-item flex flex-row justify-start bg-white m-2 rounded-lg drop-shadow-xl">
                     <div class="basis-1/3 rounded-l-lg">
-                        <img class="h-28 w-30 rounded-l-lg" src="{{ $value['img'] }}">
+                        <img class="h-28 object-none w-30 rounded-l-lg" src="{{ $value['img'] }}">
                     </div>
                     <div
                         class="p-5 basis-1/2 grid justify-items-center uppercase text-xs text-main-color content-center text-center">
@@ -24,29 +23,32 @@
     @else
         <div class="flex flex-row text-xs p-3  font-black  text-white justify-start bg-pastel-800 m-2">
             <div class="basis-1/3 ">รูปภาพ</div>
-            <div class="basis-1/2 grid justify-items-center uppercase text-xs text-white content-center text-center">
+            <div
+                class="basis-1/2 grid justify-items-center uppercase text-xs text-white content-center text-center hidden md:block">
                 รหัสสาร</div>
             <div class="basis-1/2 grid justify-items-center uppercase text-xs text-white content-center text-center">
                 ชื่อสาร</div>
-            <div class="basis-1/2 grid justify-items-center uppercase text-xs text-white content-center text-center">
+            <div
+                class="basis-1/2 grid justify-items-center uppercase text-xs text-white content-center text-center hidden md:block">
                 ชื่อสถานะ ( สไลด์ )</div>
         </div>
-
-
         <div class="list">
             @foreach ($rmList as $value)
-                <div class="h-28 rm-item flex flex-row justify-start bg-white m-2 rounded-lg drop-shadow-xl">
+                <div class="h-28 rm-item flex flex-row justify-start {{ isset($rmDetail['id']) && $rmDetail['id'] === $value['id'] ? 'font-bold text-main-color bg-pastel-300 border-2 border-solid border-pastel-800' : ' text-main-color' }} hover:text-white hover:font-bold hover:bg-pastel-300 m-2 rounded-lg drop-shadow-xl"
+                    wire:click="getDetail('{{ json_encode($value) }}')">
                     <div class="h-28 basis-1/3 rounded-l-lg flex items-center w-full">
-                        <img class="h-full flex-shrink-0 object-cover rounded-l-lg" src="{{ $value['img'] }}">
+                        <img class="pb-1 h-48 w-full object-cover rounded-l-lg h-full w-48" src="{{ $value['img'] }}">
                     </div>
                     <div
-                        class="p-5 basis-1/2 grid justify-items-center uppercase text-xs text-main-color content-center text-center">
+                        class="{{ isset($rmDetail['id']) && $rmDetail['id'] === $value['id'] ? 'p-5' : '' }} basis-1/2 grid justify-items-center uppercase text-xs content-center text-center hidden md:block">
                         {{ $value['code'] }}</div>
                     <div
-                        class="p-5 basis-1/2 grid justify-items-center uppercase text-xs text-main-color content-center text-center">
-                        {{ $value['name'] }}</div>
+                        class="basis-1/2 grid justify-items-center uppercase text-xs content-center text-center overflow-hidden">
+                        <p class="whitespace-no-wrap">
+                            {{ $value['name'] }}</p>
+                    </div>
                     <div
-                        class="p-1 basis-1/2 grid justify-items-center uppercase text-xs text-main-color content-center text-center">
+                        class="p-1 basis-1/2 grid justify-items-center uppercase text-xs content-center text-main-color text-center hidden md:block">
 
                         <div class="flex flex-row">
                             @if (is_array($value['slide']) && count($value['slide']) > 0)
@@ -55,10 +57,12 @@
 
                                     @if ($index == 2)
                                         <div class="z-40">
-                                            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
+                                            <button id="dropdownMenuIconButton"
+                                                data-dropdown-toggle="dropdownDots-{{ $index }}"
                                                 data-dropdown-placement="right"
                                                 class="pt-2 text-xsinline-flex items-centerfont-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 hover:text-green-tea-600 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                                type="button">
+                                                type="button"
+                                                onclick="event.stopPropagation(); toggleDropdownMenu({{ $index }})">
                                                 <svg class="w-3 h-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                     viewBox="0 0 4 15">
@@ -67,8 +71,7 @@
                                                 </svg>
                                             </button>
 
-                                            <!-- Dropdown menu -->
-                                            <div id="dropdownDots"
+                                            <div id="dropdownDots-{{ $index }}"
                                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                                     aria-labelledby="dropdownMenuIconButton">
@@ -81,6 +84,7 @@
                                                             </li>
                                                         @endif
                                                     @endforeach
+                                                </ul>
                                             </div>
                                         </div>
                                     @endif
@@ -120,7 +124,6 @@
                                 @endforeach
                             @endif
                         </div>
-
 
                     </div>
                 </div>

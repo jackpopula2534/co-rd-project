@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-t bg-teal-600">
+<nav x-data="{ open: false }" class="sm:ml-64 bg-gradient-to-t bg-teal-600">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-row justify-between h-16">

@@ -36,7 +36,7 @@ export default {
             'pastel-800': '#e0715e',
 
             'green-tea-600': '#61d38e',
-
+            'pigment-red-600': '#C70039',
 
 
           },
