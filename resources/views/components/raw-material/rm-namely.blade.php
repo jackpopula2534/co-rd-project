@@ -4,14 +4,9 @@
                         <div class="pt-1">
                             <div
                                 class="mt-2 rounded-lg border border-gray-brown-500  w-full px-4 py-2 border-b border-gray-200 rounded-t-xl dark:border-gray-600 bg-gray-brown-200 text-gray-brown-500 font-medium text-xs">
-                                <p class="m-2">Acloho,l
-                                    also called
-                                    ethanol,
-                                    is a colorless liquid hwti astrona odo.r Iti su s e d i n
-                                    comscsiet foitrs antimicrobial properties whti a broad spectrum
-                                    (antifunaal, antiviral and antibacterial). I ti sa l s o used in mnay other cases
-                                    asi
-                                    a preservative, solveontr to reduceperspiration i n deodorants.</p>
+                                <p class="m-2">
+                                    {{ $rmDetail['rm_namely'] ?? '-' }}
+                                </p>
                             </div>
                         </div>
 

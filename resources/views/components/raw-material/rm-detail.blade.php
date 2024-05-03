@@ -5,7 +5,7 @@
                            <label class="">Name : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> ALCOHOL </label>
+                           <label class=""> {{ $rmDetail['name'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -13,7 +13,7 @@
                            <label class="">CAS number : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> 64-17-5 </label>
+                           <label class=""> {{ $rmDetail['rm_cas_number'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -21,7 +21,7 @@
                            <label class="">Origin(s) : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> Vegetal, Synthetic </label>
+                           <label class=""> {{ $rmDetail['rm_origin'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -29,7 +29,7 @@
                            <label class="">Other Languages : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> Alcool, Alkohol, Alcool </label>
+                           <label class=""> {{ $rmDetail['other_languages'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -37,7 +37,7 @@
                            <label class="">INCI Name : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> ALCOHOL </label>
+                           <label class=""> {{ $rmDetail['inci_name_head']['inci_name_line']['name'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -45,7 +45,7 @@
                            <label class="">EINECS/ELINCS number: </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> 200-578-6 </label>
+                           <label class=""> {{ $rmDetail['einecs_elincs'] ?? '-' }} </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -53,7 +53,7 @@
                            <label class="">Food additive : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> E1510 </label>
+                           <label class="">  {{ $rmDetail['food_additive'] ?? '-' }}  </label>
                        </div>
                    </div>
                    <div class="grid md:grid-cols-2 gap-2 pb-1">
@@ -61,8 +61,7 @@
                            <label class="">Classification : </label>
                        </div>
                        <div class="relative z-0 w-full group">
-                           <label class=""> Alcohol Bio-compatible
-                               (COSMOS Reference) </label>
+                           <label class="">  {{ $rmDetail['classification'] ?? '-' }} </label>
                        </div>
                    </div>
                </li>

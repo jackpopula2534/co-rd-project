@@ -1,7 +1,7 @@
 <div class="filter-menu flex flex-row justify-center content-center p-3">
 
     <div class="basis-1/2 title justify-center content-center ">
-        <i class='bx bx-sitemap text-2xl text-main-color'></i>
+        <i class="bx bx-sitemap text-2xl text-main-color"></i>
         <a href="#" class="text-sm pl-3 text-gray-700 hover:text-gray-900 font-black text-main-color">สารทั้งหมด
             ( <label class="rm-count">40</label> )</a>
     </div>

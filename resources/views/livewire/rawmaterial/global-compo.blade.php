@@ -19,14 +19,14 @@
 
             <x-raw-material.rm-filter />
 
-            <x-raw-material.rm-list :rm-list="$rm_list" :type="$type" />
+            <x-raw-material.rm-list :rm-list="$rm_list" :type="$type" :rmDetail="$rmDetail" />
 
         </div>
         {{-- <div class="rm-detail basis-1/2 transition-transform delay-100 -translate-x-full sm:translate-x-0 hidden lg:flex"> --}}
-        <div class="rm-detail flex-auto w-32  hidden lg:flex p-3">
+        <div class="rm-detail flex-auto w-32 hidden  {{ !empty($rmDetail) ? 'lg:flex' : '' }} p-3">
 
             <ul
-                class="w-full p-2 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-2xl dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                class="w-full p-2 text-sm font-medium text-gray-900 bg-card-color drop-shadow-xl rounded-2xl dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 {{-- title สาร --}}
                 <li
                     class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 text-main-color font-black text-sm">
@@ -44,13 +44,13 @@
                 </li>
                 {{-- ข้อมูลสาร --}}
 
-                <x-raw-material.rm-detail :type="$type" />
+                <x-raw-material.rm-detail :type="$type" :rmDetail="$rmDetail" />
 
-                <x-raw-material.rm-namely />
+                <x-raw-material.rm-namely :rmDetail="$rmDetail" />
 
-                <x-raw-material.rm-functions />
+                <x-raw-material.rm-functions :rmDetail="$rmDetail" />
 
-                <x-raw-material.rm-persent />
+                <x-raw-material.rm-persent :rmDetail="$rmDetail" />
             </ul>
 
 

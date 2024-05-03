@@ -10,9 +10,11 @@
 
         <div class="list">
             @foreach ($rmList as $value)
-                <div class="h-28 rm-item flex flex-row justify-start bg-white m-2 rounded-lg drop-shadow-xl">
-                    <div class="basis-1/3 rounded-l-lg">
-                        <img class="h-28 object-none w-30 rounded-l-lg" src="{{ $value['img'] }}">
+                <div class=" {{ !empty($rmDetail) ? 'h-28' : 'h-40' }} rm-item flex flex-row justify-start {{ isset($rmDetail['id']) && $rmDetail['id'] === $value['id'] ? 'font-bold text-main-color bg-pastel-300 border-2 border-solid border-pastel-800' : 'text-main-color bg-white border-2 border-solid border-gray-brown-200' }} hover:border-2 hover:border-solid hover:border-pastel-800 hover:text-white hover:font-bold hover:bg-pastel-300 m-2 rounded-lg drop-shadow-xl"
+                    wire:click="getDetail('{{ json_encode($value) }}')">
+                    <div
+                        class="{{ !empty($rmDetail) ? 'h-28' : 'h-40' }} basis-1/3 rounded-l-lg flex items-center w-full">
+                        <img class="pb-1 w-full object-cover rounded-l-lg h-full" src="{{ $value['img'] }}">
                     </div>
                     <div
                         class="p-5 basis-1/2 grid justify-items-center uppercase text-xs text-main-color content-center text-center">
@@ -34,7 +36,7 @@
         </div>
         <div class="list">
             @foreach ($rmList as $value)
-                <div class="h-28 rm-item flex flex-row justify-start {{ isset($rmDetail['id']) && $rmDetail['id'] === $value['id'] ? 'font-bold text-main-color bg-pastel-300 border-2 border-solid border-pastel-800' : ' text-main-color' }} hover:text-white hover:font-bold hover:bg-pastel-300 m-2 rounded-lg drop-shadow-xl"
+                <div class="h-28 rm-item flex flex-row justify-start {{ isset($rmDetail['id']) && $rmDetail['id'] === $value['id'] ? 'font-bold text-main-color bg-pastel-300 border-2 border-solid border-pastel-800' : 'text-main-color bg-white border-2 border-solid border-gray-brown-200' }} hover:border-2 hover:border-solid hover:border-pastel-800 hover:text-white hover:font-bold hover:bg-pastel-300 m-2 rounded-lg drop-shadow-xl"
                     wire:click="getDetail('{{ json_encode($value) }}')">
                     <div class="h-28 basis-1/3 rounded-l-lg flex items-center w-full">
                         <img class="pb-1 h-48 w-full object-cover rounded-l-lg h-full w-48" src="{{ $value['img'] }}">
@@ -52,17 +54,18 @@
 
                         <div class="flex flex-row">
                             @if (is_array($value['slide']) && count($value['slide']) > 0)
-                                @foreach ($value['slide'] as $index => $slide)
+                                @foreach ($value['slide'] as $index_slide => $slide)
                                     {{-- ถ้ารายการมากกว่า 2 ภาษาจะไม่โชว --}}
 
-                                    @if ($index == 2)
+                                    @if ($index_slide == 2)
                                         <div class="z-40">
-                                            <button id="dropdownMenuIconButton"
-                                                data-dropdown-toggle="dropdownDots-{{ $index }}"
-                                                data-dropdown-placement="right"
-                                                class="pt-2 text-xsinline-flex items-centerfont-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 hover:text-green-tea-600 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                                type="button"
-                                                onclick="event.stopPropagation(); toggleDropdownMenu({{ $index }})">
+                                            <button
+                                                id="dropdownMenuIconButton-{{ $index_slide . '-' . $slide['language_code'] }}"
+                                                data-dropdown-toggle="dropdownDots-{{ $index_slide . '-' . $slide['language_code'] }}"
+                                                data-dropdown-offset-distance="35" data-dropdown-offset-skidding="0"
+                                                data-dropdown-placement="top" onclick="event.stopPropagation();"
+                                                class="pt-2 pb-2 text-xsinline-flex items-centerfont-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 hover:text-green-tea-600 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                                type="button">
                                                 <svg class="w-3 h-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                     viewBox="0 0 4 15">
@@ -70,27 +73,30 @@
                                                         d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                                                 </svg>
                                             </button>
+                                            <div class="absolute">
+                                                <div id="dropdownDots-{{ $index_slide . '-' . $slide['language_code'] }}"
+                                                    class="z-10 hidden bg-gray-brown-500 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
 
-                                            <div id="dropdownDots-{{ $index }}"
-                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                    aria-labelledby="dropdownMenuIconButton">
+                                                    <ul class="py-2 text-sm  dark:text-gray-200"
+                                                        aria-labelledby="dropdownMenuIconButton-{{ $index_slide . '-' . $slide['language_code'] }}">
 
-                                                    @foreach ($value['slide'] as $index => $slide)
-                                                        @if ($index == 2)
-                                                            <li>
-                                                                <a href="#"
-                                                                    class="block px-4 py-2 hover:bg-green-tea-600 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">{{ $slide['language_code'] }}</a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                </ul>
+                                                        @foreach ($value['slide'] as $index => $slide)
+                                                            @if ($index_slide >= 2)
+                                                                <li>
+                                                                    <a href="#"
+                                                                        class="block px-4 py-2 text-white hover:bg-green-tea-600 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">{{ $slide['language_code'] }}</a>
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
                                             </div>
+
                                         </div>
                                     @endif
 
 
-                                    @break($index > 1)
+                                    @break($index_slide > 1)
                                     <div
                                         class="mr-1 ml-1 basis-1/2 flex flex-row {{ $slide['file_path'] ? 'bg-green-tea-600' : 'bg-gray-400' }} rounded-full p-1">
                                         <div>
